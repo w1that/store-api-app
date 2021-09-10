@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Input, Menu, Button } from "semantic-ui-react";
 
 export default function NavigationBar() {
@@ -6,7 +7,7 @@ export default function NavigationBar() {
     <div>
       <Menu style={{ height: "5em", marginBottom:0, borderRadius:0 }} inverted>
         <Menu.Item position="left" style={{ marginLeft: "3em" }}>
-          <h1>Online Stroe</h1>
+          <Link to="/"><h1>Online Stroe</h1></Link>
         </Menu.Item>
         <Menu.Item style={{ marginRight: 100, width: "24em" }}>
           <Input className="icon" icon="search" placeholder="Search..." />

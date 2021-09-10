@@ -4,10 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css'
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import { Router } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+import ProductDetailPage from './pages/ProductDetailPage';
 
 ReactDOM.render(
+ 
   <React.StrictMode>
-    <App />
+  
+  <Provider store={store}>
+  <BrowserRouter>
+    <App /></BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
