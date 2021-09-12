@@ -16,8 +16,15 @@ export const productsSlice = createSlice({
     items: [],
     isLoading: false,
     categories: [],
+    searchedProducts:[],
   },
   reducers: {
+    setSearchedProducts:(state,action)=>{
+      state.searchedProducts.push(action.payload)
+    },
+    removeSearchedProducts:(state)=>{
+      state.searchedProducts=[]
+    },
     
   },
   extraReducers: {
@@ -36,5 +43,5 @@ export const productsSlice = createSlice({
     },
   },
 });
-export const {} = productsSlice.actions;
+export const {setSearchedProducts,removeSearchedProducts} = productsSlice.actions;
 export default productsSlice.reducer;

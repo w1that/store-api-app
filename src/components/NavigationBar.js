@@ -1,14 +1,47 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Input, Menu, Button } from "semantic-ui-react";
-import { setSearchedProduct } from "../redux/products/productsSlice";
+import {
+  removeSearchedProducts,
+  setSearchedProducts,
+} from "../redux/products/productsSlice";
 import User from "./User";
 
 export default function NavigationBar() {
+  const history=useHistory()
   const user = useSelector((state) => state.users.user);
-  
+  const searchedProducts = useSelector(
+    (state) => state.products.searchedProducts
+  );
+  const products = useSelector((state) => state.products.items);
+  const [searchedText, setSearchedText] = useState("");
+  const dispatch = useDispatch();
+
+  function searchHandler(e) {
+    setSearchedText(e.target.value);
+    if (!searchedText) {
+      dispatch(removeSearchedProducts());
+    }
+  }
+
+  function searchClickHandler() {
+    products.map((product) => {
+      if (product.title.toLowerCase().includes(searchedText) && searchedText) {
+        if (!searchedProducts.includes(product)) {
+          dispatch(setSearchedProducts(product));
+          history.push(`/search/${searchedText}`)
+          setSearchedText('')
+        }
+      }
+      
+      
+      return;
+    });
+    
+  }
+
   return (
     <div>
       <Menu
@@ -22,12 +55,14 @@ export default function NavigationBar() {
         </Menu.Item>
         <Menu.Item style={{ marginRight: 100, width: "24em" }}>
           <Input
+            onChange={searchHandler}
+            value={searchedText}
             type="text"
             placeholder="Search..."
             action
           >
             <input />
-            <Button type="submit">
+            <Button onClick={searchClickHandler} type="submit">
               Search
             </Button>
           </Input>
