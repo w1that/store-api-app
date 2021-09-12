@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { toast } from "react-toastify";
 import { Input, Menu, Button } from "semantic-ui-react";
 import {
   removeSearchedProducts,
@@ -10,7 +9,7 @@ import {
 import User from "./User";
 
 export default function NavigationBar() {
-  const history=useHistory()
+  const history = useHistory();
   const user = useSelector((state) => state.users.user);
   const searchedProducts = useSelector(
     (state) => state.products.searchedProducts
@@ -31,15 +30,13 @@ export default function NavigationBar() {
       if (product.title.toLowerCase().includes(searchedText) && searchedText) {
         if (!searchedProducts.includes(product)) {
           dispatch(setSearchedProducts(product));
-          history.push(`/search/${searchedText}`)
-          setSearchedText('')
+          history.push(`/search/${searchedText}`);
+          setSearchedText("");
         }
       }
-      
-      
+
       return;
     });
-    
   }
 
   return (

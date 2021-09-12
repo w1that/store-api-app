@@ -1,14 +1,13 @@
 import { nanoid } from "@reduxjs/toolkit";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Divider} from "semantic-ui-react";
-
+import { Divider } from "semantic-ui-react";
 
 export default function CartPage() {
   const dispatch = useDispatch();
   const usersCarts = useSelector((state) => state.carts.usersCarts);
   const products = useSelector((state) => state.products.items);
-  const [cartPr, setCartPr] = useState(0)
+  const [cartPr, setCartPr] = useState(0);
   const [productsInCart, setProductsInCart] = useState([]);
 
   {
@@ -23,19 +22,17 @@ export default function CartPage() {
     });
   }
 
-  
-    useEffect(() => {
-        usersCarts.map((usersCart) => {
-            usersCart.products.map((product) => {
-              products.map((prod) => {
-                if (prod.id == product.productId) {
-                    setCartPr(cartprice => cartprice+(product.quantity*prod.price))
-                }
-              });
-            });
-          });
-    }, [dispatch])
-  
+  useEffect(() => {
+    usersCarts.map((usersCart) => {
+      usersCart.products.map((product) => {
+        products.map((prod) => {
+          if (prod.id == product.productId) {
+            setCartPr((cartprice) => cartprice + product.quantity * prod.price);
+          }
+        });
+      });
+    });
+  }, [dispatch]);
 
   console.log(cartPr);
   return (
@@ -50,13 +47,13 @@ export default function CartPage() {
               {usersCart.products.map((product) => {
                 return (
                   <div>
-                    <li 
+                    <li
                       style={{
                         textAlign: "left",
                         background: "#f3edff",
                         borderRadius: 10,
                       }}
-                     >
+                    >
                       {products.map((prod) => {
                         if (prod.id == product.productId) {
                           return (
@@ -72,21 +69,18 @@ export default function CartPage() {
                                 {product.quantity}x{prod.price}=
                                 {product.quantity * prod.price}
                               </h2>
-                              
                             </div>
                           );
                         }
                       })}
-                     
+
                       <div class="ui divider"></div>
                     </li>
-                    
                   </div>
-                  
                 );
               })}
-            </ul> 
-            <h1>Subtotal: {cartPr}</h1> 
+            </ul>
+            <h1>Subtotal: {cartPr}</h1>
           </div>
         );
       })}

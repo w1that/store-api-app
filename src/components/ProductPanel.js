@@ -3,13 +3,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Grid, Loader } from "semantic-ui-react";
-import { getProductsAsync, setProductsWillShown } from "../redux/products/productsSlice";
+import {
+  getProductsAsync,
+} from "../redux/products/productsSlice";
 import Product from "./Product";
 
 export default function ProductPanel() {
   const products = useSelector((state) => state.products);
-
-  
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -33,7 +33,6 @@ export default function ProductPanel() {
                 ></Product>
               </Link>
             ))}
-            
           </Grid.Row>
         </Grid>
       </div>

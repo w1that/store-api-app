@@ -6,10 +6,10 @@ import { getProductsAsync } from "../redux/products/productsSlice";
 
 export default function CategoryPanel() {
   const categories = useSelector((state) => state.products.categories);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getProductsAsync())
-  }, [dispatch])
+    dispatch(getProductsAsync());
+  }, [dispatch]);
 
   return (
     <div style={{ color: "white" }}>
@@ -23,12 +23,16 @@ export default function CategoryPanel() {
         }}
         inverted
       >
-      <Menu.Item>
-            <Link to={`/`}><h3 style={{color:"yellow"}}>all</h3></Link>
-          </Menu.Item>
+        <Menu.Item>
+          <Link to={`/`}>
+            <h3 style={{ color: "yellow" }}>all</h3>
+          </Link>
+        </Menu.Item>
         {categories.map((category) => (
           <Menu.Item>
-            <Link to={`/${category}`}><h3>{category}</h3></Link>
+            <Link to={`/${category}`}>
+              <h3>{category}</h3>
+            </Link>
           </Menu.Item>
         ))}
       </Menu>

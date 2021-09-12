@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import {  Image } from "semantic-ui-react";
+import { Image } from "semantic-ui-react";
 
 export default function ProfilePage() {
   const user = useSelector((state) => state.users.user);
@@ -14,7 +14,15 @@ export default function ProfilePage() {
   }, [axios]);
 
   return (
-    <div style={{ textAlign: "left", display: "flex", padding: "1em", marginLeft:"20em", marginTop:"8em" }}>
+    <div
+      style={{
+        textAlign: "left",
+        display: "flex",
+        padding: "1em",
+        marginLeft: "20em",
+        marginTop: "8em",
+      }}
+    >
       <div
         style={{
           padding: "2em",

@@ -1,4 +1,3 @@
-import { conditionalExpression } from "@babel/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 

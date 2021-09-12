@@ -9,14 +9,13 @@ export default function ProductDetailPage() {
 
   useEffect(() => {
     axios.get("https://fakestoreapi.com/products").then((response) => {
-      
       response.data.filter((product) => {
         if (product.id.toString() === id) {
           setProduct(product);
         }
       });
     });
-  }, [id]); 
+  }, [id]);
 
   return (
     <div style={{ paddingBottom: 102 }}>
@@ -62,7 +61,6 @@ export default function ProductDetailPage() {
               paddingTop: 80,
             }}
           >
-             
             <Button
               size="big"
               style={{ padding: 18, backgroundColor: "#c7c7ff" }}

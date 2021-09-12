@@ -11,8 +11,8 @@ export default function User({ user }) {
   const dispatch = useDispatch();
   const logoutHandler = () => {
     dispatch(logUserOut());
-    dispatch(removeUsersCarts())
-    dispatch(removeCartPrice())
+    dispatch(removeUsersCarts());
+    dispatch(removeCartPrice());
     toast.success("successfully logged out");
     history.push("/");
   };
@@ -21,7 +21,7 @@ export default function User({ user }) {
       <Dropdown
         pointing="top right"
         style={{ fontSize: "20px", padding: 10 }}
-        text={user.name.firstname +" "+ user.name.lastname}
+        text={user.name.firstname + " " + user.name.lastname}
         icon="user circle"
       >
         <Dropdown.Menu>

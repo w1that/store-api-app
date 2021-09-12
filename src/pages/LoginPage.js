@@ -10,13 +10,13 @@ export default function LoginPage() {
   const dispatch = useDispatch();
   const history = useHistory();
   const users = useSelector((state) => state.users);
-  const carts = useSelector(state=>state.carts.items)
+  const carts = useSelector((state) => state.carts.items);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   useEffect(() => {
     dispatch(getUsersAsync());
-    dispatch(getCartsAsync())
+    dispatch(getCartsAsync());
   }, [dispatch]);
 
   if (users.isLoading || carts.isLoading) {
@@ -44,11 +44,11 @@ export default function LoginPage() {
         toast.success("successfully logged in", {
           position: "bottom-right",
         });
-        carts.map(cart=>  {
-            if(cart.userId== user.id){
-                dispatch(setUsersCarts(cart))
-            }
-        })
+        carts.map((cart) => {
+          if (cart.userId == user.id) {
+            dispatch(setUsersCarts(cart));
+          }
+        });
       } else {
         setMessage("please check the infos you entered");
         setUserName("");
