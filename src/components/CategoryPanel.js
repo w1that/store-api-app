@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { Menu } from "semantic-ui-react";
 import { getProductsAsync } from "../redux/products/productsSlice";
 
@@ -9,6 +10,7 @@ export default function CategoryPanel() {
   useEffect(() => {
     dispatch(getProductsAsync())
   }, [dispatch])
+
   return (
     <div style={{ color: "white" }}>
       <Menu
@@ -23,7 +25,7 @@ export default function CategoryPanel() {
       >
         {categories.map((category) => (
           <Menu.Item>
-            <h3>{category}</h3>
+            <Link to={`/${category}`}><h3>{category}</h3></Link>
           </Menu.Item>
         ))}
       </Menu>

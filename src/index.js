@@ -8,7 +8,6 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import { BrowserRouter } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-import CartPage from "./pages/CartPage";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

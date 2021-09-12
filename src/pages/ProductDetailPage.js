@@ -9,6 +9,7 @@ export default function ProductDetailPage() {
 
   useEffect(() => {
     axios.get("https://fakestoreapi.com/products").then((response) => {
+      
       response.data.filter((product) => {
         if (product.id.toString() === id) {
           setProduct(product);

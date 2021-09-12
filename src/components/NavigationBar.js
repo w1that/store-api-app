@@ -1,12 +1,14 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { Input, Menu, Button } from "semantic-ui-react";
+import { setSearchedProduct } from "../redux/products/productsSlice";
 import User from "./User";
 
 export default function NavigationBar() {
   const user = useSelector((state) => state.users.user);
-
+  
   return (
     <div>
       <Menu
@@ -19,10 +21,19 @@ export default function NavigationBar() {
           </Link>
         </Menu.Item>
         <Menu.Item style={{ marginRight: 100, width: "24em" }}>
-          <Input className="icon" icon="search" placeholder="Search..." />
+          <Input
+            type="text"
+            placeholder="Search..."
+            action
+          >
+            <input />
+            <Button type="submit">
+              Search
+            </Button>
+          </Input>
         </Menu.Item>
         {user.username ? (
-          <Menu.Item style={{marginRight: "4em"}} position="right">
+          <Menu.Item style={{ marginRight: "4em" }} position="right">
             <User user={user}></User>
           </Menu.Item>
         ) : (

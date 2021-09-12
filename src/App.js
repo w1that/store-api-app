@@ -10,6 +10,7 @@ import LoginPage from "./pages/LoginPage";
 import { ToastContainer } from "react-toastify";
 import ProfilePage from "./pages/ProfilePage";
 import CartPage from "./pages/CartPage";
+import CategoriesProductsPage from "./pages/CategoriesProductsPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Container>
         <Route path="/products/:id" component={ProductDetailPage}></Route>
         <Route exact path="/" component={ProductPanel}></Route>
+        <Route exact path="/:category" component={CategoriesProductsPage}></Route>
         <Route exact path="/signin" component={LoginPage}></Route>
         <Route exact path="/profile/:username" component={ProfilePage}></Route>
         <Route exact path="/cart/:username" component={CartPage}></Route>

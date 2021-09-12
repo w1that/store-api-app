@@ -11,7 +11,6 @@ export default function LoginPage() {
   const history = useHistory();
   const users = useSelector((state) => state.users);
   const carts = useSelector(state=>state.carts.items)
-  const usersCarts = useSelector(state=>state.carts.usersCarts)
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");

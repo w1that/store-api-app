@@ -1,3 +1,4 @@
+import { conditionalExpression } from "@babel/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -16,7 +17,9 @@ export const productsSlice = createSlice({
     isLoading: false,
     categories: [],
   },
-  reducers: {},
+  reducers: {
+    
+  },
   extraReducers: {
     [getProductsAsync.fulfilled]: (state, action) => {
       state.items = action.payload;

@@ -1,9 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router";
 import { toast } from "react-toastify";
-import { Container, Image } from "semantic-ui-react";
+import {  Image } from "semantic-ui-react";
 
 export default function ProfilePage() {
   const user = useSelector((state) => state.users.user);

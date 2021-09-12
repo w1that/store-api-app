@@ -30,6 +30,7 @@ export default function ProductPanel() {
                 ></Product>
               </Link>
             ))}
+            
           </Grid.Row>
         </Grid>
       </div>
